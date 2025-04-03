@@ -1,57 +1,43 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { auth } from "./firebase";
+import { signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-export default function Navbar() {
+export default function NavBar() {
+  const [user] = useAuthState(auth);
+
+  const handleLogout = () => {
+    signOut(auth);
+  };
+
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-gray-900 text-white shadow-md">
-      <h1 className="text-xl md:text-2xl font-bold tracking-tight">
-        🍽️ Zaven's CalorieTracker
-      </h1>
-
-      <div className="flex gap-6 text-sm md:text-base">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? "text-green-400 font-semibold border-b-2 border-green-400"
-              : "hover:text-green-300 transition"
-          }
-        >
+    <div className="h-screen w-64 bg-gray-800 text-white flex flex-col p-6 fixed">
+      <h1 className="text-2xl font-bold mb-10">🍽️ CalorieTracker</h1>
+      <nav className="flex flex-col gap-4 flex-grow">
+        <Link to="/" className="hover:text-blue-400">
           Home
-        </NavLink>
-
-        <NavLink
-          to="/dashboard"
-          className={({ isActive }) =>
-            isActive
-              ? "text-green-400 font-semibold border-b-2 border-green-400"
-              : "hover:text-green-300 transition"
-          }
-        >
+        </Link>
+        <Link to="/dashboard" className="hover:text-blue-400">
           Dashboard
-        </NavLink>
-
-        <NavLink
-          to="/foodlog"
-          className={({ isActive }) =>
-            isActive
-              ? "text-green-400 font-semibold border-b-2 border-green-400"
-              : "hover:text-green-300 transition"
-          }
-        >
+        </Link>
+        <Link to="/foodlog" className="hover:text-blue-400">
           Food Log
-        </NavLink>
-
-        <NavLink
-          to="/chatbot"
-          className={({ isActive }) =>
-            isActive
-              ? "text-green-400 font-semibold border-b-2 border-green-400"
-              : "hover:text-green-300 transition"
-          }
-        >
+        </Link>
+        <Link to="/chatbot" className="hover:text-blue-400">
           ChatBot
-        </NavLink>
-      </div>
-    </nav>
+        </Link>
+      </nav>
+      {user && (
+        <div className="mt-auto">
+          <p className="text-sm mb-2">Hi, {user.displayName?.split(" ")[0]}</p>
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 px-4 py-1 rounded hover:bg-red-600"
+          >
+            Logout
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
