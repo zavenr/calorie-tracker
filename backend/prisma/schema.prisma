@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model FoodLog {
+  id        Int      @id @default(autoincrement())
+  user_id   String
+  food_name String
+  calories  Int
+  protein   Int
+  carbs     Int
+  fats      Int
+  date      DateTime @default(now())
+}
