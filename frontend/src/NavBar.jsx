@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { auth } from "./firebase";
+import { auth } from "./auth/firebase";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Home, LayoutDashboard, Utensils, Bot, LogOut } from "lucide-react";

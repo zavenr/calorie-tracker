@@ -7,7 +7,7 @@ import ChatBot from "./ChatBot";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute"; // ⬅️ new import
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./firebase";
+import { auth } from "./auth/firebase";
 
 export default function AppRouter() {
   const [user, loading] = useAuthState(auth);

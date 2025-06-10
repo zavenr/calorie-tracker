@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getFoodLogs, createFoodLog } from "./api";
+import { getFoodLogs, createFoodLog } from "./auth/api";
 
 export default function FoodLog() {
   const [logs, setLogs] = useState([]);
