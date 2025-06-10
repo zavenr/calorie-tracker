@@ -8,12 +8,14 @@ datasource db {
 }
 
 model FoodLog {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   user_id   String
   food_name String
   calories  Int
   protein   Int
   carbs     Int
   fats      Int
-  date      DateTime @default(now())
+  date      DateTime? @default(dbgenerated("CURRENT_DATE")) @db.Date
+
+  @@map("food_logs")
 }

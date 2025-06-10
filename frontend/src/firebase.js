@@ -4,12 +4,12 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCF0Dnlbrq81JJXc2jPkPL1-7HK6bkH0VY",
-  authDomain: "calorietracker-f73de.firebaseapp.com",
-  projectId: "calorietracker-f73de",
-  storageBucket: "calorietracker-f73de.firebasestorage.app",
-  messagingSenderId: "753118669457",
-  appId: "1:753118669457:web:c94c745b5f4474aac6ad30",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase

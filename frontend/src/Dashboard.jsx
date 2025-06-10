@@ -1,30 +1,56 @@
+import { useEffect, useState } from "react";
 import { DonutChart } from "@tremor/react";
 import { Drumstick, Wheat, Pizza } from "lucide-react";
+import axios from "axios";
 
 export default function Dashboard() {
-  const data = {
-    calories: 2500,
-    protein: 125,
-    carbs: 240,
-    fats: 70,
-  };
+  const [logs, setLogs] = useState([]);
+  const [totals, setTotals] = useState({
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fats: 0,
+  });
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/foodlogs")
+      .then((res) => {
+        setLogs(res.data);
+
+        const totals = res.data.reduce(
+          (acc, item) => ({
+            calories: acc.calories + item.calories,
+            protein: acc.protein + item.protein,
+            carbs: acc.carbs + item.carbs,
+            fats: acc.fats + item.fats,
+          }),
+          { calories: 0, protein: 0, carbs: 0, fats: 0 }
+        );
+
+        setTotals(totals);
+      })
+      .catch((err) => {
+        console.error("Error fetching logs:", err);
+      });
+  }, []);
 
   const macroCards = [
     {
       label: "Protein",
-      value: data.protein,
-      color: "rose", // Tailwind color name
+      value: totals.protein,
+      color: "rose",
       icon: <Drumstick size={20} color="#f87171" />,
     },
     {
       label: "Carbs",
-      value: data.carbs,
+      value: totals.carbs,
       color: "amber",
       icon: <Wheat size={20} color="#facc15" />,
     },
     {
       label: "Fats",
-      value: data.fats,
+      value: totals.fats,
       color: "blue",
       icon: <Pizza size={20} color="#60a5fa" />,
     },
@@ -36,8 +62,8 @@ export default function Dashboard() {
       <div className="bg-slate-900 rounded-xl p-6 w-full max-w-lg mb-12 shadow flex flex-col items-center">
         <DonutChart
           data={[
-            { name: "Calories", value: data.calories },
-            { name: "Remaining", value: 3000 - data.calories }, // temp goal
+            { name: "Calories", value: totals.calories },
+            { name: "Remaining", value: Math.max(3000 - totals.calories, 0) },
           ]}
           category="value"
           index="name"
@@ -45,7 +71,7 @@ export default function Dashboard() {
           showAnimation
         />
         <h2 className="text-4xl font-bold text-center mt-4 text-indigo-400">
-          {data.calories} kcal
+          {totals.calories} kcal
         </h2>
         <p className="text-center text-slate-400">Total Calories</p>
       </div>
@@ -60,7 +86,7 @@ export default function Dashboard() {
             <DonutChart
               data={[
                 { name: macro.label, value: macro.value },
-                { name: "Remaining", value: 300 - macro.value }, // temporary target
+                { name: "Remaining", value: Math.max(300 - macro.value, 0) },
               ]}
               category="value"
               index="name"
