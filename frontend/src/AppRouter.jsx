@@ -28,7 +28,7 @@ export default function AppRouter() {
   // ✅ If signed in, show the app
   return (
     <Router>
-      <NavBar /> {/* 👈 margin-left to match sidebar width */}
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

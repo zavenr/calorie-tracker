@@ -53,7 +53,7 @@ export default function FoodLog() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gray-800">
+    <div className="min-h-screen w-full bg-gray-800 pt-16">
       <div className="p-8 text-white">
         <h2 className="text-2xl font-bold mb-4">Log a New Food</h2>
         <form onSubmit={handleSubmit} className="mb-6 space-y-4">

@@ -57,7 +57,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen w-full bg-gray-800">
+    <div className="min-h-screen w-full bg-gray-800 pt-16">
       <div className="p-8 text-white flex flex-col items-center">
         {/* Calories Donut */}
         <div className="bg-slate-900 rounded-xl p-6 w-full max-w-lg mb-12 shadow flex flex-col items-center">

@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div
-      className="flex flex-col items-center justify-center min-h-screen px-4 text-center bg-gray-800"
+      className="flex flex-col items-center justify-center min-h-screen px-4 text-center bg-gray-800 pt-16"
       bg
     >
       <h2 className="text-4xl font-bold text-green-600 mb-4">
