@@ -28,38 +28,34 @@ export default function AppRouter() {
   // ✅ If signed in, show the app
   return (
     <Router>
-      <NavBar />
-      <div className="ml-64 p-6">
-        {" "}
-        {/* 👈 margin-left to match sidebar width */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/foodlog"
-            element={
-              <ProtectedRoute>
-                <FoodLog />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/chatbot"
-            element={
-              <ProtectedRoute>
-                <ChatBot />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </div>
+      <NavBar /> {/* 👈 margin-left to match sidebar width */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/foodlog"
+          element={
+            <ProtectedRoute>
+              <FoodLog />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chatbot"
+          element={
+            <ProtectedRoute>
+              <ChatBot />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </Router>
   );
 }

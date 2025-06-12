@@ -1,6 +1,9 @@
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] px-4 text-center">
+    <div
+      className="flex flex-col items-center justify-center min-h-screen px-4 text-center bg-gray-800"
+      bg
+    >
       <h2 className="text-4xl font-bold text-green-600 mb-4">
         Welcome to Zaven's CalorieTracker 🥗
       </h2>

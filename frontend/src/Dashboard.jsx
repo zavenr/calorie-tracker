@@ -57,48 +57,50 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="p-8 text-white flex flex-col items-center">
-      {/* Calories Donut */}
-      <div className="bg-slate-900 rounded-xl p-6 w-full max-w-lg mb-12 shadow flex flex-col items-center">
-        <DonutChart
-          data={[
-            { name: "Calories", value: totals.calories },
-            { name: "Remaining", value: Math.max(3000 - totals.calories, 0) },
-          ]}
-          category="value"
-          index="name"
-          colors={["indigo", "slate"]}
-          showAnimation
-        />
-        <h2 className="text-4xl font-bold text-center mt-4 text-indigo-400">
-          {totals.calories} kcal
-        </h2>
-        <p className="text-center text-slate-400">Total Calories</p>
-      </div>
+    <div className="min-h-screen w-full bg-gray-800">
+      <div className="p-8 text-white flex flex-col items-center">
+        {/* Calories Donut */}
+        <div className="bg-slate-900 rounded-xl p-6 w-full max-w-lg mb-12 shadow flex flex-col items-center">
+          <DonutChart
+            data={[
+              { name: "Calories", value: totals.calories },
+              { name: "Remaining", value: Math.max(3000 - totals.calories, 0) },
+            ]}
+            category="value"
+            index="name"
+            colors={["indigo", "slate"]}
+            showAnimation
+          />
+          <h2 className="text-4xl font-bold text-center mt-4 text-indigo-400">
+            {totals.calories} kcal
+          </h2>
+          <p className="text-center text-slate-400">Total Calories</p>
+        </div>
 
-      {/* Macro Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-        {macroCards.map((macro) => (
-          <div
-            key={macro.label}
-            className="bg-slate-900 rounded-xl p-6 flex flex-col items-center shadow"
-          >
-            <DonutChart
-              data={[
-                { name: macro.label, value: macro.value },
-                { name: "Remaining", value: Math.max(300 - macro.value, 0) },
-              ]}
-              category="value"
-              index="name"
-              colors={[macro.color, "slate"]}
-              showAnimation
-            />
-            <h3 className={`text-xl font-bold mt-4 text-${macro.color}-400`}>
-              {macro.value}g <span className="text-white">{macro.label}</span>
-            </h3>
-            <div className="mt-2">{macro.icon}</div>
-          </div>
-        ))}
+        {/* Macro Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+          {macroCards.map((macro) => (
+            <div
+              key={macro.label}
+              className="bg-slate-900 rounded-xl p-6 flex flex-col items-center shadow"
+            >
+              <DonutChart
+                data={[
+                  { name: macro.label, value: macro.value },
+                  { name: "Remaining", value: Math.max(300 - macro.value, 0) },
+                ]}
+                category="value"
+                index="name"
+                colors={[macro.color, "slate"]}
+                showAnimation
+              />
+              <h3 className={`text-xl font-bold mt-4 text-${macro.color}-400`}>
+                {macro.value}g <span className="text-white">{macro.label}</span>
+              </h3>
+              <div className="mt-2">{macro.icon}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
