@@ -19,4 +19,4 @@ A full-stack fitness and nutrition app that lets users log food, monitor daily c
 Project is under active development – adding meal history, daily goals, and dark mode support.
 
 ##  Contact
-For questions or suggestions, feel free to reach out: [zaven2003@gmail.com](mailto:zaven2003@gmail.com)
+For questions or suggestions, feel free to reach out: [zavenran@gmail.com](mailto:zavenran@gmail.com)
