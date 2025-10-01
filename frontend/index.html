@@ -2,12 +2,101 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Basic Meta Tags -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Track your calories, macros, and fitness goals with CalorieTracker - your personal nutrition companion"
+    />
+    <meta
+      name="keywords"
+      content="calorie tracker, nutrition, fitness, health, diet, macros"
+    />
+    <meta name="author" content="CalorieTracker" />
+
+    <!-- Title -->
+    <title>CalorieTracker - Nutrition & Fitness</title>
+
+    <!-- Favicons -->
     <link rel="icon" type="image/png" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CT</title>
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="msapplication-TileColor" content="#3b82f6" />
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
+
+    <!-- Apple-specific meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="CalorieTracker" />
+
+    <!-- Apple Splash Screens -->
+    <link
+      rel="apple-touch-startup-image"
+      href="/splash/iphone-x.png"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="/splash/iphone-xr.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+    />
+
+    <!-- Critical CSS will be loaded by Vite -->
+
+    <!-- Prevent flash of unstyled content -->
+    <style>
+      body {
+        margin: 0;
+        background-color: #0f172a;
+        color: white;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      .loading-screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0f172a;
+        z-index: 9999;
+      }
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid #374151;
+        border-top: 3px solid #3b82f6;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Loading screen shown while app loads -->
+      <div class="loading-screen">
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,13 +1,26 @@
 {
-  "name": "calorietracker",
-  "version": "1.0.0",
+  "name": "calorie-tracker-backend",
+  "version": "2.0.0",
+  "description": "Mobile-optimized calorie tracker backend API",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "db:push": "prisma db push",
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio",
+    "db:reset": "prisma migrate reset --force"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "calorie-tracker",
+    "fitness",
+    "nutrition",
+    "api",
+    "mobile"
+  ],
+  "author": "Zaven",
+  "license": "MIT",
   "dependencies": {
     "@prisma/client": "^6.6.0",
     "cors": "^2.8.5",
@@ -15,6 +28,5 @@
     "express": "^4.21.2",
     "pg": "^8.14.1",
     "prisma": "^6.6.0"
-  },
-  "description": ""
+  }
 }
