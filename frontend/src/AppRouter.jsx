@@ -10,12 +10,14 @@ import { auth } from "./auth/firebase";
 
 export default function AppRouter() {
   const [user, loading, error] = useAuthState(auth);
-  
+
   // Development mode bypass
-  const isDevelopment = import.meta.env.VITE_FIREBASE_API_KEY === 'demo-api-key-for-development';
-  
-  if (loading && !isDevelopment) return <LoadingScreen message="Loading your account..." />;
-  
+  const isDevelopment =
+    import.meta.env.VITE_FIREBASE_API_KEY === "demo-api-key-for-development";
+
+  if (loading && !isDevelopment)
+    return <LoadingScreen message="Loading your account..." />;
+
   // In development mode, bypass authentication
   if (isDevelopment) {
     console.log("� Development mode: Bypassing authentication");
