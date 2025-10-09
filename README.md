@@ -18,7 +18,7 @@ npm install
 docker-compose up -d
 npm run dev
 
-# Frontend (new terminal)  
+# Frontend (new terminal)
 cd frontend
 npm install --legacy-peer-deps
 npm run dev
@@ -38,28 +38,17 @@ Open **http://localhost:5173**
 Create `.env` files:
 
 **backend/.env**
+
 ```env
 DATABASE_URL="postgresql://postgres:password@localhost:5432/calorietracker"
 PORT=3001
 ```
 
 **frontend/.env**
+
 ```env
 VITE_API_URL=http://localhost:3001
 VITE_FIREBASE_API_KEY=demo-api-key-for-development
 ```
 
 > Use `demo-api-key-for-development` to bypass authentication in dev mode
-
-## Deployment
-
-**Frontend:** Build with `npm run build`, deploy `dist/` folder  
-**Backend:** Deploy to Railway/Heroku with PostgreSQL
-
-## Author
-
-Zaven - [zavenran@gmail.com](mailto:zavenran@gmail.com)
-
-## License
-
-MIT
